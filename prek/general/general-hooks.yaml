@@ -47,14 +47,14 @@ repos:
             }
           - --strict
   - repo: https://github.com/crate-ci/typos
-    rev: v1.32.0
+    rev: v1.40.0
     hooks:
       - id: typos
         args:
           - --force-exclude
           - --hidden
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.45.0
+    rev: v0.46.0
     hooks:
       - id: markdownlint-fix
         args:
@@ -65,11 +65,11 @@ repos:
       - id: forbid-tabs
         exclude: >-
           (?x)(
-            .dic$|
-            .tex$
+            \.dic$|
+            \.tex$
           )
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.24.2
+    rev: v0.24.3
     hooks:
       - id: toml-sort-fix
         args:
@@ -78,7 +78,7 @@ repos:
           - --spaces-indent-inline-array=4
           - --trailing-comma-inline-array
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.5.3
+    rev: v3.6.2
     hooks:
       - id: prettier
         additional_dependencies:
@@ -87,13 +87,16 @@ repos:
         args:
           - --prose-wrap=always
           - --quote-props=as-needed
+        # https://github.com/rbubley/mirrors-prettier/issues/3
+        language_version: 18.20.8
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       - id: check-added-large-files
         args:
           - --enforce-all
-        exclude: .dic$
+          - --maxkb=1000
+        exclude: \.dic$
       - id: check-case-conflict
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
@@ -105,7 +108,7 @@ repos:
           - --fix=lf
       - id: trailing-whitespace
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.7
+    rev: v1.7.9
     hooks:
       - id: actionlint
   - repo: https://github.com/shellcheck-py/shellcheck-py

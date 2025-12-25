@@ -7,7 +7,7 @@ HERE = pathlib.Path(__file__).resolve()
 
 def run_hooks(hooks_path: pathlib.Path) -> int:
     """
-    Run pre-commit using the specified config.
+    Run prek using the specified config.
 
     Args:
         hooks_path: The Path object of the hooks
@@ -17,14 +17,14 @@ def run_hooks(hooks_path: pathlib.Path) -> int:
     """
     cfg = HERE.parent / hooks_path
     result = subprocess.run(  # noqa: S603
-        [
-            "pre-commit",
+        [  # noqa: S607
+            "prek",
             "run",
             "--config",
             f"{cfg}",
             "--files",
-        ]
-        + sys.argv[1:],
+            *sys.argv[1:],
+        ],
         check=False,
     )
     return result.returncode
