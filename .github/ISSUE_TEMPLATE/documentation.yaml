@@ -3,7 +3,7 @@ name: Documentation
 description: How Can We Improve the Documentation
 labels:
   - documentation
-assignees: paddyroddy
+assignees: razekmh
 body:
   - id: section
     type: textarea

@@ -7,7 +7,7 @@ jobs:
   documentation:
     runs-on: ubuntu-latest
     steps:
-      - uses: paddyroddy/.github/actions/python/pdoc@vx
+      - uses: razekmh/.github/actions/python/pdoc@vx
         with:
           docs-dependency-section: docs
           gh-pages-publish-directory: ./html/python_project

@@ -17,7 +17,7 @@ jobs:
         python-version:
           - "3.x"
     steps:
-      - uses: paddyroddy/.github/actions/python/tox@vx
+      - uses: razekmh/.github/actions/python/tox@vx
         with:
           cache-path: .tox
           pyproject-toml: ./pyproject.toml

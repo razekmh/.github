@@ -1,6 +1,6 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["github>paddyroddy/.github//renovate/default-config.json5"],
+  extends: ["github>razekmh/.github//renovate/default-config.json5"],
   "pre-commit": {
     managerFilePatterns: ["/prek/.*/.*-hooks\\.yaml/"],
   },

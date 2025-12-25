@@ -17,7 +17,7 @@ jobs:
         python-version:
           - "3.x"
     steps:
-      - uses: paddyroddy/.github/actions/python/uv@vx
+      - uses: razekmh/.github/actions/python/uv@vx
         with:
           cache-path: ""
           pyproject-toml: ./pyproject.toml

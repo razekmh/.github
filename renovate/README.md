@@ -8,7 +8,7 @@ To enable `Renovate` in a given repository, one must install and enable the
 ```json5
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["github>paddyroddy/.github//renovate/default-config.json5"],
+  extends: ["github>razekmh/.github//renovate/default-config.json5"],
 }
 ```
 

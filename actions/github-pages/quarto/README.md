@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: paddyroddy/.github/actions/github-pages/quarto@vx
+      - uses: razekmh/.github/actions/github-pages/quarto@vx
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -24,7 +24,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: paddyroddy/.github/actions/github-pages/quarto@vx
+      - uses: razekmh/.github/actions/github-pages/quarto@vx
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           requirements-txt: ./requirements.txt

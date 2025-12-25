@@ -3,7 +3,7 @@ name: Question
 description: General Questions About Using Example
 labels:
   - question
-assignees: paddyroddy
+assignees: razekmh
 body:
   - id: topic
     type: dropdown

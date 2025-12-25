@@ -7,7 +7,7 @@ jobs:
   chktex:
     runs-on: ubuntu-latest
     steps:
-      - uses: paddyroddy/.github/actions/latex/chktex@vx
+      - uses: razekmh/.github/actions/latex/chktex@vx
 ```
 
 where `x` is the `major` version of the action.

@@ -7,7 +7,7 @@ jobs:
   dropbox:
     runs-on: ubuntu-latest
     steps:
-      - uses: paddyroddy/.github/actions/dropbox@vx
+      - uses: razekmh/.github/actions/dropbox@vx
         with:
           configfile-version: ${{ secrets.CONFIGFILE_VERSION }}
           files-to-upload: $(find . -maxdepth 1 -name '*.pdf' -print)

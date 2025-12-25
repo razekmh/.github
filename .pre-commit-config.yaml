@@ -1,6 +1,6 @@
 ---
 repos:
-  - repo: https://github.com/paddyroddy/.github
+  - repo: https://github.com/razekmh/.github
     rev: 4283fbb
     hooks:
       - id: general-hooks

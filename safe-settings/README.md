@@ -2,7 +2,7 @@
 
 [Safe-Settings](https://github.com/github/safe-settings) is a way to manage
 policy-as-code and apply repository settings across the account. A
-[GitHub App](https://github.com/apps/paddyroddy-safe-settings) has been set up
+[GitHub App](https://github.com/apps/razekmh-safe-settings) has been set up
 which the [GitHub Action](../.github/workflows/safe-settings.yaml) uses to apply
 the settings on a cron schedule.
 

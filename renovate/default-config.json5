@@ -4,7 +4,7 @@
     "config:best-practices",
     "schedule:automergeWeekdays",
     "schedule:monthly",
-    ":assignAndReview(paddyroddy)",
+    ":assignAndReview(razekmh)",
     ":automergeBranch",
     ":automergeDigest",
     ":automergeMinor",
@@ -32,9 +32,9 @@
       matchDepNames: ["actions/download-artifact", "actions/upload-artifact"],
     },
     {
-      description: "Combine paddyroddy/.github updates together",
-      groupName: "paddyroddy/.github",
-      matchDepNames: ["paddyroddy/.github"],
+      description: "Combine razekmh/.github updates together",
+      groupName: "razekmh/.github",
+      matchDepNames: ["razekmh/.github"],
     },
     {
       description: "Only allow major updates",

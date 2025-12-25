@@ -7,7 +7,7 @@ jobs:
   licence:
     runs-on: ubuntu-latest
     steps:
-      - uses: paddyroddy/.github/actions/licence@vx
+      - uses: razekmh/.github/actions/licence@vx
         with:
           licence-token: ${{ secrets.LICENCE_PAT }}
           licence-file: ./LICENCE.txt

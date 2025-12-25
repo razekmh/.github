@@ -5,7 +5,7 @@ file called `.pre-commit-config.yaml` with the following code.
 
 ```yaml
 repos:
-  - repo: https://github.com/paddyroddy/.github
+  - repo: https://github.com/razekmh/.github
     rev: v0.1.0
     hooks:
       - id: lua-hooks

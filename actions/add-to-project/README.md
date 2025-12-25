@@ -7,7 +7,7 @@ jobs:
   add-issue-to-project:
     runs-on: ubuntu-latest
     steps:
-      - uses: paddyroddy/.github/actions/add-to-project@vx
+      - uses: razekmh/.github/actions/add-to-project@vx
         with:
           project-token: ${{ secrets.PROJECT_PAT }}
 ```
@@ -21,7 +21,7 @@ jobs:
   add-issue-to-project:
     runs-on: ubuntu-latest
     steps:
-      - uses: paddyroddy/.github/actions/add-to-project@vx
+      - uses: razekmh/.github/actions/add-to-project@vx
         with:
           project-token: ${{ secrets.PROJECT_PAT }}
           project-url: project_board_url

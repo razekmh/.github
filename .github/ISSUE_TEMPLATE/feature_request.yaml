@@ -3,7 +3,7 @@ name: Feature Request
 description: Suggest a Way to Improve This Project
 labels:
   - enhancement
-assignees: paddyroddy
+assignees: razekmh
 body:
   - id: problem
     type: textarea

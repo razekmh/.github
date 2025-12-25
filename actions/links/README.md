@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - uses: paddyroddy/.github/actions/links@vx
+      - uses: razekmh/.github/actions/links@vx
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - uses: paddyroddy/.github/actions/links@vx
+      - uses: razekmh/.github/actions/links@vx
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           lychee-args: --no-progress --verbose .
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - uses: paddyroddy/.github/actions/links@vx
+      - uses: razekmh/.github/actions/links@vx
         with:
           branch: gh-pages
           github-token: ${{ secrets.GITHUB_TOKEN }}
