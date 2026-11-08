@@ -2,29 +2,23 @@ import pathlib
 import subprocess
 import sys
 
-HERE = pathlib.Path(__file__).resolve()
-
 
 def run_hooks(hooks_path: pathlib.Path) -> int:
     """
     Run prek using the specified config.
 
     Args:
-        hooks_path: The Path object of the hooks
+        hooks_path: Absolute path of the hooks config file
 
     Returns:
         The return code of the process
     """
-    cfg = HERE.parent / hooks_path
-    result = subprocess.run(  # noqa: S603
-        [  # noqa: S607
-            "prek",
-            "run",
-            "--config",
-            f"{cfg}",
-            "--files",
-            *sys.argv[1:],
-        ],
-        check=False,
-    )
-    return result.returncode
+    cmd = [
+        "prek",
+        "run",
+        "--config",
+        str(hooks_path),
+        "--files",
+        *sys.argv[1:],
+    ]
+    return subprocess.run(cmd, check=False).returncode  # noqa: S603
