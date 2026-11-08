@@ -1,0 +1,5 @@
+---
+rules:
+  # zizmor suggests the newer `$/...` syntax for local actions; keep `./...`
+  self-repository:
+    disable: true
