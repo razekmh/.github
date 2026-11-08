@@ -17,20 +17,27 @@ concurrency:
 
 jobs:
   safe-settings-sync:
+    # skip (instead of failing) until the GitHub App is set up
+    if: vars.SAFE_SETTINGS_APP_ID != ''
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     env:
-      SAFE_SETTINGS_VERSION: 2.1.14
+      SAFE_SETTINGS_VERSION: 3.0.0
       SAFE_SETTINGS_CODE_DIR: .safe-settings-code
     steps:
       - name: Checkout source
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
 
       - name: Checkout GitHub Safe-Settings repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           path: ${{ env.SAFE_SETTINGS_CODE_DIR }}
+          persist-credentials: false
           ref: ${{ env.SAFE_SETTINGS_VERSION }}
-          repository: github/safe-settings
+          repository: github-community-projects/safe-settings
 
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
@@ -55,10 +62,14 @@ jobs:
           DEPLOYMENT_CONFIG_FILE:
             ${{ github.workspace }}/safe-settings/deployment.yaml
           ENABLE_PR_COMMENT: true
+          # dry run on pull requests: report what would change, apply on main
+          FULL_SYNC_NOP: ${{ github.event_name == 'pull_request' }}
           GH_ORG: ${{ vars.SAFE_SETTINGS_GH_ORG }}
           GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
-          GITHUB_CLIENT_SECRET:
-            ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }}
+          # yamllint disable rule:line-length
+          # prettier-ignore
+          GITHUB_CLIENT_SECRET: ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }} # zizmor: ignore[secrets-outside-env]
           LOG_LEVEL: trace
-          PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }}
+          PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          # yamllint enable rule:line-length
           SETTINGS_FILE_PATH: account.yaml
