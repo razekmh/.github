@@ -13,5 +13,5 @@ Reference a commit SHA with the version in a trailing comment, on **one line**:
 ```
 
 Keep the `uses:` line on a single line. Renovate only updates the SHA when it
-can read the whole reference on one line — a folded `uses: >-` over two lines
-is missed (this caused a missed bump in razekmh/talks).
+can read the whole reference on one line — a folded `uses: >-` over two lines is
+missed (this caused a missed bump in razekmh/talks).
