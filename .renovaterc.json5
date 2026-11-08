@@ -1,6 +1,8 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["github>razekmh/.github//renovate/default-config.json5"],
+  // this repo is a fork of paddyroddy/.github; Renovate skips forks unless they opt in
+  forkProcessing: "enabled",
   "pre-commit": {
     managerFilePatterns: ["/prek/.*/.*-hooks\\.yaml/"],
   },
