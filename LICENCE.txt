@@ -1,6 +1,7 @@
 BSD 3-Clause Licence
 
-Copyright (c) 2023-2025, Mahmoud Abdelrazek
+Copyright (c) 2023-2026, Patrick Roddy
+Copyright (c) 2025-2026, Mahmoud Abdelrazek (modifications)
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
