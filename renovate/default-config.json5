@@ -2,7 +2,6 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
     "config:best-practices",
-    "schedule:automergeWeekdays",
     "schedule:monthly",
     ":assignAndReview(razekmh)",
     ":automergeBranch",
@@ -16,6 +15,7 @@
     ":prHourlyLimitNone",
     ":prNotPending",
   ],
+  minimumReleaseAge: "7 days",
   commitMessageAction: "Renovate:",
   "git-submodules": {
     enabled: true,
@@ -46,6 +46,18 @@
       description: "Support loose versioning",
       matchDepNames: ["cmhughes/latexindent.pl", "shellcheck-py/shellcheck-py"],
       versioning: "loose",
+    },
+    {
+      description: "Disable minimum release age checks for own GitHub Actions",
+      matchManagers: ["github-actions"],
+      matchPackageNames: ["razekmh/*"],
+      minimumReleaseAge: null,
+    },
+    {
+      description: "Disable minimum release age checks for own pre-commit hooks",
+      matchManagers: ["pre-commit"],
+      matchPackageNames: ["razekmh/*"],
+      minimumReleaseAge: null,
     },
   ],
 }
