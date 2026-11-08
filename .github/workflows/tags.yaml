@@ -37,16 +37,19 @@ jobs:
 
       - name: Extract major tag
         id: extract-major
+        env:
+          NEW_TAG: ${{ steps.bump-version.outputs.new_tag }}
         run: >-
-          echo major_tag="$(echo ${{ steps.bump-version.outputs.new_tag }} | cut
-          -d'.' -f1)" >> "$GITHUB_OUTPUT"
+          echo major_tag="$(echo "$NEW_TAG" | cut -d'.' -f1)" >>
+          "$GITHUB_OUTPUT"
 
       # this is done manually as need a non-annotated tag
       # TODO: replace with https://github.com/actions/publish-action
       - name: Update major tag
+        env:
+          MAJOR_TAG: ${{ steps.extract-major.outputs.major_tag }}
+          NEW_TAG: ${{ steps.bump-version.outputs.new_tag }}
         run: >-
           git config user.name github-actions; git config user.email
-          github-actions@github.com; git tag --force ${{
-          steps.extract-major.outputs.major_tag }} ${{
-          steps.bump-version.outputs.new_tag }}; git push origin ${{
-          steps.extract-major.outputs.major_tag }} --force
+          github-actions@github.com; git tag --force "$MAJOR_TAG" "$NEW_TAG";
+          git push origin "$MAJOR_TAG" --force
