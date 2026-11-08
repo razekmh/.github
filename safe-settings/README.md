@@ -96,5 +96,7 @@ One-time setup (the workflow is skipped until `SAFE_SETTINGS_APP_ID` exists):
    gh secret set SAFE_SETTINGS_PRIVATE_KEY < ~/Downloads/razekmh-safe-settings.*.private-key.pem
    ```
 
-5. Run **Safe Settings Sync** from the Actions tab (`workflow_dispatch`) and
-   check the log, then delete the downloaded `.pem` file.
+5. Preview, then apply. Re-running the **Safe Settings Sync** check on an open
+   pull request is a dry run that logs what would change. Running it from the
+   Actions tab (`workflow_dispatch`), or merging to `main`, **applies** the
+   settings. Delete the downloaded `.pem` file afterwards.
