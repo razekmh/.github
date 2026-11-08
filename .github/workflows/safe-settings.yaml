@@ -8,7 +8,12 @@ on:
   pull_request:
   schedule:
     - cron: 0 */4 * * *
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Report what would change without applying it
+        type: boolean
+        default: true
 
 concurrency:
   cancel-in-progress: true
@@ -62,8 +67,12 @@ jobs:
           DEPLOYMENT_CONFIG_FILE:
             ${{ github.workspace }}/safe-settings/deployment.yaml
           ENABLE_PR_COMMENT: true
-          # dry run on pull requests: report what would change, apply on main
-          FULL_SYNC_NOP: ${{ github.event_name == 'pull_request' }}
+          # dry run on pull requests and (by default) manual runs; push to main
+          # and the schedule apply. Settings/rulesets are read from main even
+          # on a PR, so a PR run only previews main's config, not the PR's.
+          FULL_SYNC_NOP:
+            ${{ github.event_name == 'pull_request' || (github.event_name ==
+            'workflow_dispatch' && inputs.dry-run) }}
           GH_ORG: ${{ vars.SAFE_SETTINGS_GH_ORG }}
           GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
           # yamllint disable rule:line-length

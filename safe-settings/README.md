@@ -96,7 +96,12 @@ One-time setup (the workflow is skipped until `SAFE_SETTINGS_APP_ID` exists):
    gh secret set SAFE_SETTINGS_PRIVATE_KEY < ~/Downloads/razekmh-safe-settings.*.private-key.pem
    ```
 
-5. Preview, then apply. Re-running the **Safe Settings Sync** check on an open
-   pull request is a dry run that logs what would change. Running it from the
-   Actions tab (`workflow_dispatch`), or merging to `main`, **applies** the
-   settings. Delete the downloaded `.pem` file afterwards.
+5. Preview, then apply: **Actions → Safe Settings Sync → Run workflow** with
+   **dry-run** ticked (the default) logs what would change. Run it again with
+   dry-run unticked to apply, or wait for the next scheduled run. Delete the
+   downloaded `.pem` file afterwards.
+
+Note: safe-settings reads `account.yaml` and `suborgs/` from `main` (the
+repository list in `deployment.yaml` comes from the checked-out branch), so a
+dry run on a pull request previews `main`'s settings, not the pull request's.
+Review settings changes in the diff and preview them after merging.
