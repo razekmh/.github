@@ -28,12 +28,17 @@ runs:
   steps:
     - name: Set up Dropbox
       shell: bash
+      env:
+        CONFIGFILE_VERSION: ${{ inputs.configfile-version }}
+        OAUTH_APP_KEY: ${{ inputs.oauth-app-key }}
+        OAUTH_APP_SECRET: ${{ inputs.oauth-app-secret }}
+        OAUTH_REFRESH_TOKEN: ${{ inputs.oauth-refresh-token }}
       run: >-
         {
-          echo "CONFIGFILE_VERSION=${{ inputs.configfile-version }}";
-          echo "OAUTH_APP_KEY=${{ inputs.oauth-app-key }}";
-          echo "OAUTH_APP_SECRET=${{ inputs.oauth-app-secret }}";
-          echo "OAUTH_REFRESH_TOKEN=${{ inputs.oauth-refresh-token }}";
+          echo "CONFIGFILE_VERSION=$CONFIGFILE_VERSION";
+          echo "OAUTH_APP_KEY=$OAUTH_APP_KEY";
+          echo "OAUTH_APP_SECRET=$OAUTH_APP_SECRET";
+          echo "OAUTH_REFRESH_TOKEN=$OAUTH_REFRESH_TOKEN";
         } > ~/.dropbox_uploader
 
     - name: Retrieve Dropbox uploader script
@@ -45,6 +50,10 @@ runs:
 
     - name: Upload PDF
       shell: bash
+      env:
+        FILES_TO_UPLOAD: ${{ inputs.files-to-upload }}
+      # FILES_TO_UPLOAD is deliberately unquoted in the loop: it is a
+      # whitespace-separated list
       run: >-
-        for file in ${{ inputs.files-to-upload }}; do echo $file;
-        ./dropbox_uploader.sh upload $file $file; done
+        for file in $FILES_TO_UPLOAD; do echo "$file"; ./dropbox_uploader.sh
+        upload "$file" "$file"; done

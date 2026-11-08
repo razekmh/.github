@@ -44,13 +44,18 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: uv sync --group ${{ inputs.docs-dependency-section }}
+      env:
+        DOCS_GROUP: ${{ inputs.docs-dependency-section }}
+      run: uv sync --group "$DOCS_GROUP"
 
     - name: Create documentation
       shell: bash
+      env:
+        PROJECT_DIRECTORY: ${{ inputs.project-directory }}
+        TEMPLATE_DIRECTORY: ${{ inputs.template-directory }}
       run: >-
-        uv run pdoc --html ${{ inputs.project-directory }} --template-dir ${{
-        inputs.template-directory}}
+        uv run pdoc --html "$PROJECT_DIRECTORY" --template-dir
+        "$TEMPLATE_DIRECTORY"
 
     - name: Deploy
       if: github.ref == 'refs/heads/main'

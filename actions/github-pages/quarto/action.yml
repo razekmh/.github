@@ -41,7 +41,9 @@ runs:
     - name: Install dependencies
       if: inputs.requirements-txt
       shell: bash
-      run: uv pip install -r ${{ inputs.requirements-txt }}
+      env:
+        REQUIREMENTS_TXT: ${{ inputs.requirements-txt }}
+      run: uv pip install -r "$REQUIREMENTS_TXT"
 
     - name: Set up Quarto
       # yamllint disable-line rule:line-length
