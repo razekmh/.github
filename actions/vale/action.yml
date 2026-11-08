@@ -7,22 +7,44 @@ inputs:
     description: GitHub token
     required: true
 
+  min-alert-level:
+    description: >-
+      Lowest Vale severity reported and failed on (suggestion, warning, error)
+    default: error
+
+  reporter:
+    description: >-
+      reviewdog reporter (github-check works on push and pull_request events)
+    default: github-check
+
   vale-flags:
-    description: Flags to pass to vale
+    description: Extra flags to pass to vale
     default: ""
+
+  vale-version:
+    description: Vale CLI version to install
+    default: 3.26.0
 
 runs:
   using: composite
   steps:
     - name: Checkout source
       uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      with:
+        persist-credentials: false
 
+    # filter in Vale itself: reviewdog hard-fails above 10 annotations per
+    # step whatever their severity, so only alerts at min-alert-level and
+    # above are passed on (and fail the job)
     - name: Run Vale
-      uses: errata-ai/vale-action@d89dee975228ae261d22c15adcd03578634d429c # v2
+      # yamllint disable-line rule:line-length
+      uses: vale-cli/vale-action@85f9f7f2c5f449ac0ae5b66662961bae3f77ca6a # v2.1.2
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       with:
         fail_on_error: true
         filter_mode: nofilter
-        reporter: github-pr-review
-        vale_flags: ${{ inputs.vale-flags }}
+        reporter: ${{ inputs.reporter }}
+        vale_flags:
+          --minAlertLevel=${{ inputs.min-alert-level }} ${{ inputs.vale-flags }}
+        version: ${{ inputs.vale-version }}
