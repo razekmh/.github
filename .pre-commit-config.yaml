@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/razekmh/.github
-    rev: 4283fbb
+    rev: v0.0.2
     hooks:
       - id: general-hooks
       - id: python-hooks
