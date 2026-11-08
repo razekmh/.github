@@ -27,7 +27,9 @@ runs:
       with:
         path: .jupyter_cache
         # yamllint disable-line rule:line-length
-        key: quarto-${{ runner.os }}-${{ hashFiles('_quarto.yml', '_quarto.yaml', inputs.requirements-txt) }}
+        key:
+          quarto-${{ runner.os }}-${{ hashFiles('_quarto.yml', '_quarto.yaml',
+          inputs.requirements-txt) }}
         restore-keys: |
           quarto-${{ runner.os }}-
 
