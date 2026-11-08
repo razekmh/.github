@@ -11,6 +11,10 @@ inputs:
     description: Path of requirements.txt
     default: ""
 
+  quarto-version:
+    description: Quarto version to install (e.g. 1.11.9); "release" for latest
+    default: release
+
 runs:
   using: composite
   steps:
@@ -22,7 +26,10 @@ runs:
       uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
       with:
         path: .jupyter_cache
-        key: quarto-${{ hashFiles('_quarto.yaml') }}
+        # yamllint disable-line rule:line-length
+        key: quarto-${{ runner.os }}-${{ hashFiles('_quarto.yml', '_quarto.yaml', inputs.requirements-txt) }}
+        restore-keys: |
+          quarto-${{ runner.os }}-
 
     - name: Set up uv
       if: inputs.requirements-txt
@@ -38,6 +45,8 @@ runs:
     - name: Set up Quarto
       # yamllint disable-line rule:line-length
       uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # v2
+      with:
+        version: ${{ inputs.quarto-version }}
 
     - name: Render ${{ github.ref_name }} branch
       if: github.ref != 'refs/heads/main'
