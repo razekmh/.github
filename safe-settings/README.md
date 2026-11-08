@@ -52,8 +52,8 @@ The [suborganisation settings](suborgs/rulesets.yaml) define
 [rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)
 for every managed repository:
 
-- **Default**: the default branch can't be deleted or force-pushed.
-- **Release tags**: `v*.*.*` tags can't be deleted or moved. The floating major
+- **Default**: the default branch cannot be deleted or force-pushed.
+- **Release tags**: `v*.*.*` tags cannot be deleted or moved. The floating major
   tag (e.g. `v0`) is deliberately not covered, because
   [tags.yaml](../.github/workflows/tags.yaml) force-moves it on each release.
 
@@ -80,8 +80,8 @@ One-time setup (the workflow is skipped until `SAFE_SETTINGS_APP_ID` exists):
      [Safe-Settings deployment docs](https://raw.githubusercontent.com/github-community-projects/safe-settings/refs/heads/main-enterprise/docs/deploy.md)):
      Actions: Read-only; Administration, Checks, Commit statuses, Contents,
      Custom properties, Environments, Issues, Pull requests and Variables: Read
-     & Write; Metadata: Read-only. The organisation permissions don't apply to a
-     personal account.
+     & Write; Metadata: Read-only. The organisation permissions do not apply to
+     a personal account.
    - **Where can this App be installed?** Only on this account
 2. On the App's page, note the **App ID** and **Client ID**, generate a **client
    secret**, and generate a **private key** (`.pem` download).
