@@ -2,6 +2,8 @@
 ---
 suborgrepos:
   - "*"
+  # minimatch's `*` skips dot-names, so name this repo explicitly
+  - .github
 
 rulesets:
   - name: Default
