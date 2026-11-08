@@ -14,8 +14,8 @@ jobs:
 
 where `x` is the `major` version of the action. Vale is a lightweight job, so
 the `ubuntu-slim` runner is a fine (lower-cost) default; keep
-`runs-on: ubuntu-latest` only if the job needs a full VM. If flags are required for vale,
-then modify the above to:
+`runs-on: ubuntu-latest` only if the job needs a full VM. If flags are required
+for vale, then modify the above to:
 
 ```yaml
 jobs:

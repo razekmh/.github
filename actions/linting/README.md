@@ -15,6 +15,6 @@ jobs:
 where `x` is the `major` version of the action.
 
 The action installs its own tooling (uv, prek, node), so the lightweight
-`ubuntu-slim` runner is enough and bills lower — a good default while your
-repo is private. Keep `runs-on: ubuntu-latest` if a job needs a full VM
-(e.g. `github-pages/quarto` rendering or any Jupyter execution).
+`ubuntu-slim` runner is enough and bills lower — a good default while your repo
+is private. Keep `runs-on: ubuntu-latest` if a job needs a full VM (e.g.
+`github-pages/quarto` rendering or any Jupyter execution).
